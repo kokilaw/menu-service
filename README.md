@@ -9,6 +9,7 @@ For building and running the application you need:
 ## Database Design & Design Decisions
 
 ![Alt text](./misc/db-design/eat-club-coding-assignment-db-design.svg)
+- Please refer [this page](misc/database-table-spec.md) for the detailed specification of the tables.  
 - `restaurant` table holds the data related to a specific restaurant.
 - `category` table holds the data related to categories of a menu.
 - `item` table holds the data related to items of a menu.

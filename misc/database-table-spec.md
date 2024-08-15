@@ -1,6 +1,6 @@
 # Table Specification
 
-## restuarant
+## restaurant
 
 | Column Name   | Properties                                | Description                                                     |
 |---------------|-------------------------------------------|-----------------------------------------------------------------|
