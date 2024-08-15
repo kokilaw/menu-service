@@ -19,7 +19,7 @@ For building and running the application you need:
 - `item_modifier_group` mapping table has been introduced since an item can include multiple modifier groups and a modifier group can belong to multiple items.
 - `modifier_group_modifier_option` mapping table has been introduced since a modifier group can include multiple modifier options and a modifier option can belong to multiple modifier groups.
 - `public_id` column on tables `restaurant, category, item, modifier group and modifier option` will hold an UUID value which can be exposed to public as an id if needed. Column `id` is not used to avoid exposing guessable id to public.
-- `item_variabt.type` column will have two possible values as DEFAULT and SIZE.
+- `item_variant.type` column will have two possible values as DEFAULT and SIZE.
   - DEFAULT - when item has no variants
   - SIZE - when item variants are based on size
 
