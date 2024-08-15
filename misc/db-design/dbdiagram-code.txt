@@ -1,0 +1,83 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table restaurant {
+  id bigint [primary key]
+  name varchar
+  website varchar
+  phone_number varchar
+  email varchar
+  currency_code varchar(3)
+}
+
+Table category {
+  id bigint [primary key]
+  restaurant_id bigint
+  name varchar
+}
+
+Table item {
+  id bigint [primary key]
+  public_id varchar(36) [unique]
+  restaurant_id bigint
+  category_id bigint
+  name varchar
+  description text
+}
+
+Table item_variant {
+  id bigint [primary key]
+  item_id bigint
+  sku varchar
+  type varchar
+  price decimal(6,2)
+}
+
+Table category_item {
+  id bigint [primary key]
+  public_id varchar(36) [unique]
+  category_id bigint
+  item_id bigint
+}
+
+Table modifier_group {
+  id bigint [primary key]
+  public_id varchar(36) [unique]
+  restaurant_id bigint
+  name varchar
+  min_required int
+  max_allowed int
+}
+
+Table item_modifier_group {
+  id bigint [primary key]
+  item_id bigint
+  modifier_group_id bigint
+}
+
+Table modifier_option {
+  id bigint [primary key]
+  public_id varchar(36) [unique]
+  restaurant_id bigint
+  name varchar
+  sku varchar
+  price decimal(6,2)
+}
+
+Table modifier_group_modifier_option {
+  id bigint [primary key]
+  modifier_group_id bigint
+  modifier_option_id bigint
+}
+
+Ref: category.restaurant_id > restaurant.id // many-to-one
+Ref: item.restaurant_id > restaurant.id // many-to-one
+Ref: item_variant.item_id > item.id // many-to-one
+Ref: category_item.category_id > category.id // many-to-one
+Ref: category_item.item_id > item.id // many-to-one
+Ref: modifier_group.restaurant_id > restaurant.id // many-to-one
+Ref: modifier_option.restaurant_id > restaurant.id // many-to-one
+Ref: item_modifier_group.item_id > item.id // many-to-one
+Ref: item_modifier_group.modifier_group_id > modifier_group.id // many-to-one
+Ref: modifier_group_modifier_option.modifier_group_id > modifier_group.id // many-to-one
+Ref: modifier_group_modifier_option.modifier_option_id > modifier_option.id // many-to-one
