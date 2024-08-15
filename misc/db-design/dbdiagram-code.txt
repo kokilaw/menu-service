@@ -22,7 +22,6 @@ Table item {
   id bigint [primary key]
   public_id varchar(36) [unique]
   restaurant_id bigint
-  category_id bigint
   name varchar
   description text
 }
