@@ -24,21 +24,25 @@ class CategoryRepositoryTest {
     RestaurantRepository restaurantRepository;
 
     private static final String TEST_RESTAURANT_ID = UUID.randomUUID().toString();
+    private static final String TEST_CATEGORY_ID = UUID.randomUUID().toString();
 
     @Test
-    void whenCategoryIsSaved_IdIsSetAndIsReturn() {
+    void whenCategoryIsSaved_IdIsSetAndIsReturned() {
         RestaurantEntity restaurantEntity = getRestaurantEntity();
 
         CategoryEntity categoryEntity = CategoryEntity.builder()
                 .name("Vegetarian Pizza")
                 .restaurant(restaurantEntity)
-                .publicId(UUID.randomUUID().toString())
+                .publicId(TEST_CATEGORY_ID)
                 .build();
         categoryRepository.persist(categoryEntity);
         assertNotNull(restaurantEntity.getId());
 
         Optional<RestaurantEntity> savedCategory = restaurantRepository.findByIdOptional(restaurantEntity.getId());
         assertTrue(savedCategory.isPresent());
+
+        assertTrue(categoryRepository.findByPublicIdAndRestaurantId(TEST_CATEGORY_ID, restaurantEntity).isPresent());
+
     }
 
     private RestaurantEntity getRestaurantEntity() {

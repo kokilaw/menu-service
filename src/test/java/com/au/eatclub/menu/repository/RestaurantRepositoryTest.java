@@ -4,7 +4,6 @@ import com.au.eatclub.menu.repository.model.RestaurantEntity;
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
