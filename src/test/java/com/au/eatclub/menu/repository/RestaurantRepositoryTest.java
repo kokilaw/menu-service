@@ -22,8 +22,9 @@ class RestaurantRepositoryTest {
 
     @Test
     void givenEntity_whenSaved_IdGetsSetAndSavedEntityIsReturning() {
+        String publicId = UUID.randomUUID().toString();
         RestaurantEntity entity = RestaurantEntity.builder()
-                .publicId(UUID.randomUUID().toString())
+                .publicId(publicId)
                 .name("Curry Pot")
                 .email("info@currypot.com.au")
                 .phoneNumber("0061456098345")
@@ -35,6 +36,8 @@ class RestaurantRepositoryTest {
 
         Optional<RestaurantEntity> savedEntity = restaurantRepository.findByIdOptional(entity.getId());
         assertTrue(savedEntity.isPresent());
+        assertTrue(restaurantRepository.findByPublicId(publicId).isPresent());
+
     }
 
 }
