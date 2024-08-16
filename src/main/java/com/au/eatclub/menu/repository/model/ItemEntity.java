@@ -3,6 +3,8 @@ package com.au.eatclub.menu.repository.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -43,6 +45,10 @@ public class ItemEntity {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "type")
+    @Enumerated(EnumType.STRING)
+    private ItemType type;
+
     @Builder.Default
     @OneToMany(
             cascade = CascadeType.ALL,
@@ -52,9 +58,9 @@ public class ItemEntity {
     private List<ItemVariantEntity> variants = new ArrayList<>();
 
     @Builder.Default
-    @ManyToMany(cascade =
-            {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "category_item",
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "category_item",
             joinColumns = {
                     @JoinColumn(
                             name = "item_id",
@@ -74,6 +80,17 @@ public class ItemEntity {
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
 
+    @Builder.Default
+    @ManyToMany(
+            mappedBy = "items",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
+    private List<ModifierGroupEntity> modifierGroups = new ArrayList<>();
+
+    public enum ItemType {
+        DEFAULT_ITEM, MODIFIER
+    }
+
     public void addVariant(ItemVariantEntity variant) {
         variants.add(variant);
         variant.setItem(this);
@@ -82,6 +99,16 @@ public class ItemEntity {
     public void removeVariant(ItemVariantEntity variant) {
         variant.setItem(null);
         variants.remove(variant);
+    }
+
+    public void addModifierGroup(ModifierGroupEntity modifierGroup) {
+        this.modifierGroups.add(modifierGroup);
+        modifierGroup.getItems().add(this);
+    }
+
+    public void removeItem(ModifierGroupEntity modifierGroup) {
+        this.modifierGroups.remove(modifierGroup);
+        modifierGroup.getItems().remove(this);
     }
 
 }

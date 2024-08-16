@@ -60,6 +60,7 @@ class ItemRepositoryTest {
         ItemEntity itemOne = ItemEntity.builder()
                 .id(itemOneId)
                 .name("ITEM_1")
+                .type(ItemEntity.ItemType.DEFAULT_ITEM)
                 .description("sample description 1")
                 .restaurant(restaurantEntity)
                 .build();
@@ -67,6 +68,7 @@ class ItemRepositoryTest {
         ItemEntity itemTwo = ItemEntity.builder()
                 .id(itemTwoId)
                 .name("ITEM_2")
+                .type(ItemEntity.ItemType.DEFAULT_ITEM)
                 .description("sample description 2")
                 .restaurant(restaurantEntity)
                 .build();
@@ -97,6 +99,7 @@ class ItemRepositoryTest {
                 .id(itemId)
                 .name("ITEM_1")
                 .description("sample description 1")
+                .type(ItemEntity.ItemType.DEFAULT_ITEM)
                 .restaurant(restaurantEntity)
                 .build();
         itemEntity.addVariant(ItemVariantEntity.builder()

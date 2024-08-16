@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -24,8 +25,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "category")
-public class CategoryEntity {
+@Table(name = "modifier_group")
+public class ModifierGroupEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,25 +39,35 @@ public class CategoryEntity {
     @Column(name = "name")
     private String name;
 
-    @Builder.Default
-    @ManyToMany(
-            mappedBy = "categories",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    private List<ItemEntity> items = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
 
-    public void addItem(ItemEntity itemEntity) {
-        items.add(itemEntity);
-        itemEntity.getCategories().add(this);
-    }
+    @Builder.Default
+    @Column(name = "min_required")
+    private Integer minRequired = 0;
 
-    public void removeItem(ItemEntity itemEntity) {
-        items.remove(itemEntity);
-        itemEntity.getCategories().remove(this);
-    }
+    @Builder.Default
+    @Column(name = "max_allowed")
+    private Integer maxAllowed = 0;
+
+    @Builder.Default
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "item_modifier_group",
+            joinColumns = {
+                    @JoinColumn(
+                            name = "modifier_group_id",
+                            referencedColumnName = "internal_id"
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(
+                            name = "item_id",
+                            referencedColumnName = "internal_id"
+                    )
+            }
+    )
+    private List<ItemEntity> items = new ArrayList<>();
 
 }
