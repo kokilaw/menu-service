@@ -10,8 +10,8 @@ import java.util.Optional;
 public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
-    public Optional<RestaurantEntity> findByPublicId(String publicId) {
-        return find("publicId  = ?1", publicId).firstResultOptional();
+    public Optional<RestaurantEntity> findById(String id) {
+        return find("id  = ?1", id).firstResultOptional();
     }
 
 }

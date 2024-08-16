@@ -23,7 +23,7 @@ class RestaurantRepositoryTest {
     void givenEntity_whenSaved_IdGetsSetAndSavedEntityIsReturning() {
         String publicId = UUID.randomUUID().toString();
         RestaurantEntity entity = RestaurantEntity.builder()
-                .publicId(publicId)
+                .id(publicId)
                 .name("Curry Pot")
                 .email("info@currypot.com.au")
                 .phoneNumber("0061456098345")
@@ -31,11 +31,11 @@ class RestaurantRepositoryTest {
                 .currencyCode("AUD")
                 .build();
         restaurantRepository.persist(entity);
-        assertNotNull(entity.getId());
+        assertNotNull(entity.getInternalId());
 
-        Optional<RestaurantEntity> savedEntity = restaurantRepository.findByIdOptional(entity.getId());
+        Optional<RestaurantEntity> savedEntity = restaurantRepository.findByIdOptional(entity.getInternalId());
         assertTrue(savedEntity.isPresent());
-        assertTrue(restaurantRepository.findByPublicId(publicId).isPresent());
+        assertTrue(restaurantRepository.findById(publicId).isPresent());
 
     }
 

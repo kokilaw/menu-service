@@ -31,10 +31,11 @@ public class ItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "internal_id")
+    private Long internalId;
 
-    @Column(name = "public_id")
-    private String publicId;
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "name")
     private String name;
@@ -57,13 +58,13 @@ public class ItemEntity {
             joinColumns = {
                     @JoinColumn(
                             name = "item_id",
-                            referencedColumnName = "id"
+                            referencedColumnName = "internal_id"
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
                             name = "category_id",
-                            referencedColumnName = "id"
+                            referencedColumnName = "internal_id"
                     )
             }
     )

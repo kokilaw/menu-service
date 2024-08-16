@@ -33,15 +33,15 @@ class CategoryRepositoryTest {
         CategoryEntity categoryEntity = CategoryEntity.builder()
                 .name("Vegetarian Pizza")
                 .restaurant(restaurantEntity)
-                .publicId(TEST_CATEGORY_ID)
+                .id(TEST_CATEGORY_ID)
                 .build();
         categoryRepository.persist(categoryEntity);
-        assertNotNull(restaurantEntity.getId());
+        assertNotNull(restaurantEntity.getInternalId());
 
-        Optional<RestaurantEntity> savedCategory = restaurantRepository.findByIdOptional(restaurantEntity.getId());
+        Optional<RestaurantEntity> savedCategory = restaurantRepository.findByIdOptional(restaurantEntity.getInternalId());
         assertTrue(savedCategory.isPresent());
 
-        assertTrue(categoryRepository.findByPublicIdAndRestaurantId(TEST_CATEGORY_ID, restaurantEntity).isPresent());
+        assertTrue(categoryRepository.findByIdAndRestaurant(TEST_CATEGORY_ID, restaurantEntity).isPresent());
 
     }
 

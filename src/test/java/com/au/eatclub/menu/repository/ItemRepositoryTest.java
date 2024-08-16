@@ -45,27 +45,27 @@ class ItemRepositoryTest {
 
         String categoryId = UUID.randomUUID().toString();
         restaurantEntity.addCategory(CategoryEntity.builder()
-                .publicId(categoryId)
+                .id(categoryId)
                 .name("CAT_1")
                 .build());
         restaurantRepository.persist(restaurantEntity);
 
         Optional<CategoryEntity> categorySaveResult = categoryRepository
-                .findByPublicIdAndRestaurantId(categoryId, restaurantEntity);
+                .findByIdAndRestaurant(categoryId, restaurantEntity);
 
         assertTrue(categorySaveResult.isPresent(), "Saved category not available");
         CategoryEntity savedCategory = categorySaveResult.get();
 
         String itemOneId = UUID.randomUUID().toString();
         ItemEntity itemOne = ItemEntity.builder()
-                .publicId(itemOneId)
+                .id(itemOneId)
                 .name("ITEM_1")
                 .description("sample description 1")
                 .restaurant(restaurantEntity)
                 .build();
         String itemTwoId = UUID.randomUUID().toString();
         ItemEntity itemTwo = ItemEntity.builder()
-                .publicId(itemTwoId)
+                .id(itemTwoId)
                 .name("ITEM_2")
                 .description("sample description 2")
                 .restaurant(restaurantEntity)
@@ -76,11 +76,11 @@ class ItemRepositoryTest {
         categoryRepository.persist(savedCategory);
 
         assertTrue(
-                itemRepository.findByPublicIdAndRestaurantId(itemOneId, restaurantEntity).isPresent(),
+                itemRepository.findByIdAndRestaurant(itemOneId, restaurantEntity).isPresent(),
                 "Save first item not available"
         );
         assertTrue(
-                itemRepository.findByPublicIdAndRestaurantId(itemTwoId, restaurantEntity).isPresent(),
+                itemRepository.findByIdAndRestaurant(itemTwoId, restaurantEntity).isPresent(),
                 "Save second item not available"
         );
 
@@ -94,7 +94,7 @@ class ItemRepositoryTest {
         );
         String itemId = UUID.randomUUID().toString();
         ItemEntity itemEntity = ItemEntity.builder()
-                .publicId(itemId)
+                .id(itemId)
                 .name("ITEM_1")
                 .description("sample description 1")
                 .restaurant(restaurantEntity)
@@ -103,17 +103,17 @@ class ItemRepositoryTest {
                 .type(ItemVariantEntity.VariantType.SIZE)
                 .price(BigDecimal.valueOf(2.00f))
                 .name("Small")
-                .publicId(UUID.randomUUID().toString())
+                .id(UUID.randomUUID().toString())
                 .build());
         itemEntity.addVariant(ItemVariantEntity.builder()
                 .type(ItemVariantEntity.VariantType.SIZE)
                 .price(BigDecimal.valueOf(4.00f))
                 .name("Medium")
-                .publicId(UUID.randomUUID().toString())
+                .id(UUID.randomUUID().toString())
                 .build());
         itemRepository.persist(itemEntity);
 
-        Optional<ItemEntity> savedItemResult = itemRepository.findByPublicIdAndRestaurantId(itemId, restaurantEntity);
+        Optional<ItemEntity> savedItemResult = itemRepository.findByIdAndRestaurant(itemId, restaurantEntity);
         assertTrue(savedItemResult.isPresent(), "Saved item not available");
         savedItemResult.ifPresent(savedItem -> {
             assertEquals(2, savedItem.getVariants().size(), "Saved two variants are not available");
