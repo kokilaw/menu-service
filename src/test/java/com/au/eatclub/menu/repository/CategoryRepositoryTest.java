@@ -28,7 +28,7 @@ class CategoryRepositoryTest {
 
     @Test
     void whenCategoryIsSaved_IdIsSetAndIsReturned() {
-        RestaurantEntity restaurantEntity = getRestaurantEntity();
+        RestaurantEntity restaurantEntity = RepositoryTestUtil.getRestaurantEntity(restaurantRepository, TEST_RESTAURANT_ID);
 
         CategoryEntity categoryEntity = CategoryEntity.builder()
                 .name("Vegetarian Pizza")
@@ -43,21 +43,6 @@ class CategoryRepositoryTest {
 
         assertTrue(categoryRepository.findByPublicIdAndRestaurantId(TEST_CATEGORY_ID, restaurantEntity).isPresent());
 
-    }
-
-    private RestaurantEntity getRestaurantEntity() {
-        return restaurantRepository.findByPublicId(TEST_RESTAURANT_ID).orElseGet(() -> {
-            RestaurantEntity restaurantEntity = RestaurantEntity.builder()
-                    .publicId(TEST_RESTAURANT_ID)
-                    .name("Curry Pot")
-                    .email("info@currypot.com.au")
-                    .phoneNumber("0061456098345")
-                    .countryCode("AU")
-                    .currencyCode("AUD")
-                    .build();
-            restaurantRepository.persist(restaurantEntity);
-            return restaurantEntity;
-        });
     }
 
 }

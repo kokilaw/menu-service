@@ -20,3 +20,24 @@ CREATE TABLE category
     PRIMARY KEY (id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
 );
+
+CREATE TABLE item
+(
+    id            bigint             NOT NULL AUTO_INCREMENT,
+    public_id     varchar(36) UNIQUE NOT NULL,
+    name          varchar(50)        NOT NULL,
+    description   varchar(255),
+    restaurant_id bigint             NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
+);
+
+CREATE TABLE category_item
+(
+    id          bigint NOT NULL AUTO_INCREMENT,
+    category_id bigint NOT NULL,
+    item_id     bigint NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (category_id) REFERENCES category (id),
+    FOREIGN KEY (item_id) REFERENCES item (id)
+)

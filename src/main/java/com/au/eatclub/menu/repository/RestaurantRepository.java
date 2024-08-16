@@ -6,7 +6,5 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import java.util.Optional;
 
 public interface RestaurantRepository extends PanacheRepository<RestaurantEntity> {
-
     Optional<RestaurantEntity> findByPublicId(String publicId);
-
 }
