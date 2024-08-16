@@ -8,7 +8,8 @@ Table restaurant {
   website varchar
   phone_number varchar
   email varchar
-  currency_code varchar(3)
+  country_code char(3)
+  currency_code char(3)
 }
 
 Table category {

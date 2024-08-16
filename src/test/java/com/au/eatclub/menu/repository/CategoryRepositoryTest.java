@@ -1,5 +1,6 @@
 package com.au.eatclub.menu.repository;
 
+import com.au.eatclub.menu.repository.model.CategoryEntity;
 import com.au.eatclub.menu.repository.model.RestaurantEntity;
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
@@ -15,14 +16,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestTransaction
 @QuarkusTest
-class RestaurantRepositoryTest {
+class CategoryRepositoryTest {
+
+    @Inject
+    CategoryRepository categoryRepository;
 
     @Inject
     RestaurantRepository restaurantRepository;
 
     @Test
-    void givenEntity_whenSaved_IdGetsSetAndSavedEntityIsReturning() {
-        RestaurantEntity entity = RestaurantEntity.builder()
+    void whenCategoryIsSaved_IdIsSetAndIsReturn() {
+        RestaurantEntity restaurantEntity = RestaurantEntity.builder()
                 .publicId(UUID.randomUUID().toString())
                 .name("Curry Pot")
                 .email("info@currypot.com.au")
@@ -30,11 +34,18 @@ class RestaurantRepositoryTest {
                 .countryCode("AU")
                 .currencyCode("AUD")
                 .build();
-        restaurantRepository.persist(entity);
-        assertNotNull(entity.getId());
+        restaurantRepository.persist(restaurantEntity);
 
-        Optional<RestaurantEntity> savedEntity = restaurantRepository.findByIdOptional(entity.getId());
-        assertTrue(savedEntity.isPresent());
+        CategoryEntity categoryEntity = CategoryEntity.builder()
+                .name("Vegetarian Pizza")
+                .restaurant(restaurantEntity)
+                .publicId(UUID.randomUUID().toString())
+                .build();
+        categoryRepository.persist(categoryEntity);
+        assertNotNull(restaurantEntity.getId());
+
+        Optional<RestaurantEntity> savedCategory = restaurantRepository.findByIdOptional(restaurantEntity.getId());
+        assertTrue(savedCategory.isPresent());
     }
 
 }
