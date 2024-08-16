@@ -40,4 +40,16 @@ CREATE TABLE category_item
     PRIMARY KEY (id),
     FOREIGN KEY (category_id) REFERENCES category (id),
     FOREIGN KEY (item_id) REFERENCES item (id)
-)
+);
+
+CREATE TABLE item_variant
+(
+    id        bigint             NOT NULL AUTO_INCREMENT,
+    public_id varchar(36) UNIQUE NOT NULL,
+    name      varchar(50)        NOT NULL,
+    item_id   bigint             NOT NULL,
+    type      varchar(10)        NOT NULL,
+    price     decimal(10, 2)     NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (item_id) REFERENCES item (id)
+);

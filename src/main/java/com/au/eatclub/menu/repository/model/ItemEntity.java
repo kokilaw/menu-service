@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,6 +43,14 @@ public class ItemEntity {
     private String description;
 
     @Builder.Default
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            mappedBy = "item",
+            orphanRemoval = true
+    )
+    private List<ItemVariantEntity> variants = new ArrayList<>();
+
+    @Builder.Default
     @ManyToMany(cascade =
             {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "category_item",
@@ -63,5 +72,15 @@ public class ItemEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
+
+    public void addVariant(ItemVariantEntity variant) {
+        variants.add(variant);
+        variant.setItem(this);
+    }
+
+    public void removeVariant(ItemVariantEntity variant) {
+        variant.setItem(null);
+        variants.remove(variant);
+    }
 
 }
