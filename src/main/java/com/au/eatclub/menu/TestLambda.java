@@ -1,4 +1,4 @@
-package com.au.eatclub;
+package com.au.eatclub.menu;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Named;

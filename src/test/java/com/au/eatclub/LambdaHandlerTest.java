@@ -1,5 +1,6 @@
 package com.au.eatclub;
 
+import com.au.eatclub.menu.InputObject;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;

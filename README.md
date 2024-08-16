@@ -1,8 +1,11 @@
 # menu-service
 
-## Requirements
+## Table Of Contents
+  * [Requirements](#requirements)
+  * [Database Design & Design Decisions](#database-design---design-decisions)
+  * [Table Spec](misc/database-table-spec.md)
 
-For building and running the application you need:
+## Requirements 
 - Java 17
 - Quarkus 3.13.2
 
@@ -23,5 +26,4 @@ For building and running the application you need:
 - `item_variant.type` column will have two possible values as DEFAULT and SIZE.
   - DEFAULT - when item has no variants
   - SIZE - when item variants are based on size
-
 

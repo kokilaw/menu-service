@@ -1,4 +1,4 @@
-package com.au.eatclub;
+package com.au.eatclub.menu;
 
 public class OutputObject {
 
