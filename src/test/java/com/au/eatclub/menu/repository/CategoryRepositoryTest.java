@@ -23,25 +23,25 @@ class CategoryRepositoryTest {
     @Inject
     RestaurantRepository restaurantRepository;
 
-    private static final String TEST_RESTAURANT_ID = UUID.randomUUID().toString();
+    private String testRestaurantId = "NOT_SET";
     private static final String TEST_CATEGORY_ID = UUID.randomUUID().toString();
 
     @Test
     void whenCategoryIsSaved_IdIsSetAndIsReturned() {
-        RestaurantEntity restaurantEntity = RepositoryTestUtil.getRestaurantEntity(restaurantRepository, TEST_RESTAURANT_ID);
+        RestaurantEntity restaurantEntity = RepositoryTestUtil.getRestaurantEntity(restaurantRepository, testRestaurantId);
+        testRestaurantId = restaurantEntity.getId();
 
         CategoryEntity categoryEntity = CategoryEntity.builder()
                 .name("Vegetarian Pizza")
                 .restaurant(restaurantEntity)
-                .id(TEST_CATEGORY_ID)
                 .build();
         categoryRepository.persist(categoryEntity);
-        assertNotNull(restaurantEntity.getInternalId());
+        assertNotNull(restaurantEntity.getId());
 
-        Optional<RestaurantEntity> savedCategory = restaurantRepository.findByIdOptional(restaurantEntity.getInternalId());
+        Optional<RestaurantEntity> savedCategory = restaurantRepository.findByIdOptional(restaurantEntity.getId());
         assertTrue(savedCategory.isPresent());
 
-        assertTrue(categoryRepository.findByIdAndRestaurant(TEST_CATEGORY_ID, restaurantEntity).isPresent());
+        assertTrue(categoryRepository.findByIdAndRestaurant(categoryEntity.getId(), restaurantEntity).isPresent());
 
     }
 

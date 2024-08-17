@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "name": "Cat  1",
+      "itemIds": [
+        "item1, item2"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "name": "Item Name",
+      "variants": [],
+      "modifierGroupId": []
+    }
+  ],
+  "modifierGroups": [
+    {
+      "name": "",
+      "modifierOptionIds": []
+    }
+  ],
+  "modifierOptions": []
+}

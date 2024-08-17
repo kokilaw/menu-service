@@ -25,11 +25,7 @@ import java.util.List;
 public class RestaurantEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "internal_id")
-    private Long internalId;
-
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "name")
@@ -50,7 +46,6 @@ public class RestaurantEntity {
     @Column(name = "currency_code")
     private String currencyCode;
 
-
     @Builder.Default
     @OneToMany(
             cascade = CascadeType.ALL,
@@ -58,6 +53,14 @@ public class RestaurantEntity {
             orphanRemoval = true
     )
     private List<CategoryEntity> categories = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            mappedBy = "restaurant",
+            orphanRemoval = true
+    )
+    private List<ModifierGroupEntity> modifierGroups = new ArrayList<>();
 
     public void addCategory(CategoryEntity category) {
         this.categories.add(category);

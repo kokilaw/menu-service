@@ -32,11 +32,7 @@ import java.util.List;
 public class ItemEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "internal_id")
-    private Long internalId;
-
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "name")
@@ -64,20 +60,20 @@ public class ItemEntity {
             joinColumns = {
                     @JoinColumn(
                             name = "item_id",
-                            referencedColumnName = "internal_id"
+                            referencedColumnName = "id"
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
                             name = "category_id",
-                            referencedColumnName = "internal_id"
+                            referencedColumnName = "id"
                     )
             }
     )
     private List<CategoryEntity> categories = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
+    @JoinColumn(name = "restaurant_id", nullable = false)
     private RestaurantEntity restaurant;
 
     @Builder.Default
@@ -106,7 +102,7 @@ public class ItemEntity {
         modifierGroup.getItems().add(this);
     }
 
-    public void removeItem(ModifierGroupEntity modifierGroup) {
+    public void removeModifierGroup(ModifierGroupEntity modifierGroup) {
         this.modifierGroups.remove(modifierGroup);
         modifierGroup.getItems().remove(this);
     }

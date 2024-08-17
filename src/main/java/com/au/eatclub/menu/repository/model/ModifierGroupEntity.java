@@ -29,11 +29,7 @@ import java.util.List;
 public class ModifierGroupEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "internal_id")
-    private Long internalId;
-
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "name")
@@ -58,13 +54,13 @@ public class ModifierGroupEntity {
             joinColumns = {
                     @JoinColumn(
                             name = "modifier_group_id",
-                            referencedColumnName = "internal_id"
+                            referencedColumnName = "id"
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
                             name = "item_id",
-                            referencedColumnName = "internal_id"
+                            referencedColumnName = "id"
                     )
             }
     )
