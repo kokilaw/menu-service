@@ -15,7 +15,6 @@ import com.au.eatclub.menu.repository.RestaurantRepository;
 import com.au.eatclub.menu.service.impl.MenuServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import io.quarkus.test.Mock;
 import org.mockito.Mockito;
 
 import java.util.Optional;

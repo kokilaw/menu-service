@@ -73,9 +73,8 @@ class MenuRepositoryTest {
         menuEntity.addCategory(categoryEntity);
         menuRepository.persist(menuEntity);
 
-        menuRepository.findByIdAndRestaurant(menuEntity.getId(), restaurantEntity).ifPresent(menuResult -> {
-            assertEquals(1, menuResult.getCategories().size());
-        });
+        menuRepository.findByIdAndRestaurant(menuEntity.getId(), restaurantEntity)
+                .ifPresent(menuResult -> assertEquals(1, menuResult.getCategories().size()));
 
 
 

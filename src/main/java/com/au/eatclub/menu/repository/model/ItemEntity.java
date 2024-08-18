@@ -77,10 +77,6 @@ public class ItemEntity {
     )
     private List<ModifierGroupEntity> modifierGroups = new ArrayList<>();
 
-    public enum ItemType {
-        DEFAULT_ITEM, MODIFIER
-    }
-
     public void addVariant(ItemVariantEntity variant) {
         variants.add(variant);
         variant.setItem(this);

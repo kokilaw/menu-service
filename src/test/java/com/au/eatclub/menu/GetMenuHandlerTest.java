@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 public class GetMenuHandlerTest {
 
     @Test
-    public void testSimpleLambdaSuccess() throws Exception {
+    public void testSimpleLambdaSuccess() {
         // you test your lambdas by invoking on http://localhost:8081
         // this works in dev mode too
 

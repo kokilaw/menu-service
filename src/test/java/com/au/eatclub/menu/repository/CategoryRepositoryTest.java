@@ -24,7 +24,6 @@ class CategoryRepositoryTest {
     RestaurantRepository restaurantRepository;
 
     private String testRestaurantId = "NOT_SET";
-    private static final String TEST_CATEGORY_ID = UUID.randomUUID().toString();
 
     @Test
     void givenCategory_whenSaved_IsReturnedCorrectly() {
