@@ -55,4 +55,9 @@ public class MenuEntity {
     )
     private List<CategoryEntity> categories = new ArrayList<>();
 
+    public void addCategory(CategoryEntity category) {
+        this.categories.add(category);
+        category.getMenus().add(this);
+    }
+
 }

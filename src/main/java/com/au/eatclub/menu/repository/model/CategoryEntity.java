@@ -52,13 +52,13 @@ public class CategoryEntity {
             name = "menu_category",
             joinColumns = {
                     @JoinColumn(
-                            name = "menu_id",
+                            name = "category_id",
                             referencedColumnName = "id"
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
-                            name = "category_id",
+                            name = "menu_id",
                             referencedColumnName = "id"
                     )
             }

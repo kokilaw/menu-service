@@ -1,15 +1,16 @@
-package com.au.eatclub;
+package com.au.eatclub.menu;
 
-import com.au.eatclub.menu.InputObject;
+import com.au.eatclub.menu.api.request.InputObject;
+import io.quarkus.test.TestTransaction;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.containsString;
 
+@TestTransaction
 @QuarkusTest
-public class LambdaHandlerTest {
+public class GetMenuHandlerTest {
 
     @Test
     public void testSimpleLambdaSuccess() throws Exception {
@@ -17,9 +18,8 @@ public class LambdaHandlerTest {
         // this works in dev mode too
 
         InputObject in = new InputObject();
-        in.setName("Stu");
-        in.setGreeting("Hello");
-        given()
+        in.setRestaurantId("b30c8aba-7784-4d24-9c7e-5f9c8eeb1153");
+        String responseString = given()
                 .contentType("application/json")
                 .accept("application/json")
                 .body(in)
@@ -27,7 +27,8 @@ public class LambdaHandlerTest {
                 .post()
                 .then()
                 .statusCode(200)
-                .body(containsString("Hello Stu"));
+                .extract().body().asPrettyString();
+        System.out.println(responseString);
     }
 
 }

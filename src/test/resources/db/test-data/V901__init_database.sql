@@ -1,5 +1,10 @@
 SET
-@restaurant_one_id = uuid();
+@restaurant_one_id = 'b30c8aba-7784-4d24-9c7e-5f9c8eeb1153';
+
+SET
+@menu_lunch = uuid();
+SET
+@menu_dinner = uuid();
 
 SET
 @cat_veg = uuid();
@@ -22,9 +27,19 @@ SET
 INSERT INTO restaurant (country_code, currency_code, email, name, phone_number, website, id)
 VALUES ('AU', 'AUD', 'cafe1@gmail.com', 'Cafe #1', '0061459765384', 'cafeone.com.au', @restaurant_one_id);
 
+INSERT INTO menu (end_at, start_at, name, restaurant_id, time_based, id)
+values ('23:59:59', '18:00:00', 'Dinner', @restaurant_one_id, 1, @menu_dinner),
+       ('23:59:59', '00:00:00', 'All Day', @restaurant_one_id, 0, @menu_lunch);
+
 INSERT INTO category (name, restaurant_id, id)
 VALUES ('Vegetarian Pizza', @restaurant_one_id, @cat_veg),
        ('Non-Vegetarian Pizza', @restaurant_one_id, @cat_nonveg);
+
+INSERT INTO menu_category (menu_id, category_id)
+VALUES (@menu_lunch, @cat_veg),
+       (@menu_lunch, @cat_nonveg),
+       (@menu_dinner, @cat_veg),
+       (@menu_dinner, @cat_nonveg);
 
 INSERT INTO item (description, name, restaurant_id, id)
 VALUES ('All children like pressed chicken lards in gold tequila and butterscotch.', 'Cheese Pizza', @restaurant_one_id,
