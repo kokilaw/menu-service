@@ -49,13 +49,13 @@ public class ModifierOptionEntity {
             name = "modifier_group_modifier_option",
             joinColumns = {
                     @JoinColumn(
-                            name = "modifier_group_id",
+                            name = "modifier_option_id",
                             referencedColumnName = "id"
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
-                            name = "modifier_option_id",
+                            name = "modifier_group_id",
                             referencedColumnName = "id"
                     )
             }

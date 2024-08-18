@@ -154,23 +154,49 @@
       {
         "name": "Sauce",
         "minRequired": 0,
-        "maxAllowed": 0,
-        "modifierOptionIds": []
+        "maxAllowed": 0
       },
       {
         "name": "Meat AddOn",
         "minRequired": 0,
-        "maxAllowed": 2,
-        "modifierOptionIds": []
+        "maxAllowed": 2
       },
       {
         "name": "Cheese AddOn",
         "minRequired": 0,
-        "maxAllowed": 1,
-        "modifierOptionIds": []
+        "maxAllowed": 1
       }
     ],
-    "modifierOptions": []
+    "modifierOptions": [
+      {
+        "name": "Ketchup",
+        "price": "0.00"
+      },
+      {
+        "name": "Mayonnaise",
+        "price": "0.00"
+      },
+      {
+        "name": "Chicken Peperoni",
+        "price": "1.50"
+      },
+      {
+        "name": "Beef Peperoni",
+        "price": "2.00"
+      },
+      {
+        "name": "Bacon",
+        "price": "2.00"
+      },
+      {
+        "name": "Cheddar",
+        "price": "1.75"
+      },
+      {
+        "name": "Mozzarella",
+        "price": "1.50"
+      }
+    ]
   },
   "success": true
 }

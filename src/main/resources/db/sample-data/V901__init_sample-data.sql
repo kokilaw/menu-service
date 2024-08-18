@@ -111,3 +111,38 @@ values (@mg_sauce, @item_cheese),
        (@mg_cheese, @item_pepperoni),
        (@mg_cheese, @item_seafood),
        (@mg_cheese, @item_hawaiian);
+
+SET
+@mo_ketchup = uuid();
+SET
+@mo_mayonnaise = uuid();
+
+SET
+@mo_chicken_peperoni = uuid();
+SET
+@mo_beef_peperoni = uuid();
+SET
+@mo_bacon = uuid();
+
+SET
+@mo_chedar = uuid();
+SET
+@mo_mozzarella = uuid();
+
+INSERT INTO modifier_option (name, price, restaurant_id, id)
+values ('Ketchup', 0.00, @restaurant_one_id, @mo_ketchup),
+       ('Mayonnaise', 0.00, @restaurant_one_id, @mo_mayonnaise),
+       ('Chicken Peperoni', 1.50, @restaurant_one_id, @mo_chicken_peperoni),
+       ('Beef Peperoni', 2.00, @restaurant_one_id, @mo_beef_peperoni),
+       ('Bacon', 2.00, @restaurant_one_id, @mo_bacon),
+       ('Cheddar', 1.75, @restaurant_one_id, @mo_chedar),
+       ('Mozzarella', 1.50, @restaurant_one_id, @mo_mozzarella);
+
+INSERT INTO modifier_group_modifier_option (modifier_group_id, modifier_option_id)
+values (@mg_sauce, @mo_ketchup),
+       (@mg_sauce, @mo_mayonnaise),
+       (@mg_meat, @mo_chicken_peperoni),
+       (@mg_meat, @mo_beef_peperoni),
+       (@mg_meat, @mo_bacon),
+       (@mg_cheese, @mo_chedar),
+       (@mg_cheese, @mo_mozzarella);
