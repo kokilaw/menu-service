@@ -10,6 +10,18 @@ CREATE TABLE restaurant
     PRIMARY KEY (id)
 );
 
+CREATE TABLE menu
+(
+    id            varchar(36) NOT NULL,
+    name          varchar(40) NOT NULL,
+    restaurant_id varchar(36) NOT NULL,
+    time_based    BOOL        NOT NULL,
+    start_at      TIME,
+    end_at        TIME,
+    PRIMARY KEY (id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
+);
+
 CREATE TABLE category
 (
     id            varchar(36) NOT NULL,
@@ -17,6 +29,15 @@ CREATE TABLE category
     restaurant_id varchar(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
+);
+
+CREATE TABLE menu_category
+(
+    menu_id     varchar(36) NOT NULL,
+    category_id varchar(36) NOT NULL,
+    PRIMARY KEY (menu_id, category_id),
+    FOREIGN KEY (menu_id) REFERENCES menu (id),
+    FOREIGN KEY (category_id) REFERENCES category (id)
 );
 
 CREATE TABLE item
