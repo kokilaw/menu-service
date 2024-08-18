@@ -1,9 +1,7 @@
 package com.au.eatclub.menu;
 
 import com.au.eatclub.menu.api.request.InputObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.test.TestTransaction;
-import jakarta.inject.Inject;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
@@ -19,9 +17,6 @@ import static io.restassured.RestAssured.given;
 
 @QuarkusTest
 public class GetMenuHandlerTest {
-
-    @Inject
-    ObjectMapper objectMapper;
 
     @TestTransaction
     @Test
