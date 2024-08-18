@@ -27,7 +27,6 @@ class RestaurantRepositoryTest {
 
     @Test
     void givenEntity_whenSaved_IdGetsSetAndSavedEntityIsReturning() {
-        String publicId = UUID.randomUUID().toString();
         RestaurantEntity entity = RestaurantEntity.builder()
                 .name("Curry Pot")
                 .email("info@currypot.com.au")

@@ -105,9 +105,7 @@ class ItemRepositoryTest {
 
         Optional<ItemEntity> savedItemResult = itemRepository.findByIdAndRestaurant(itemEntity.getId(), restaurantEntity);
         assertTrue(savedItemResult.isPresent(), "Saved item not available");
-        savedItemResult.ifPresent(savedItem -> {
-            assertEquals(2, savedItem.getVariants().size(), "Saved two variants are not available");
-        });
+        savedItemResult.ifPresent(savedItem -> assertEquals(2, savedItem.getVariants().size(), "Saved two variants are not available"));
 
     }
 

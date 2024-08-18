@@ -2,7 +2,6 @@ package com.au.eatclub.menu.repository;
 
 import com.au.eatclub.menu.repository.model.ModifierGroupEntity;
 import com.au.eatclub.menu.repository.model.RestaurantEntity;
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import java.util.List;

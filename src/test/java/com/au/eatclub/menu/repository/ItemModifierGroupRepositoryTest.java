@@ -51,9 +51,7 @@ class ItemModifierGroupRepositoryTest {
 
         Optional<ItemEntity> savedItemResult = itemRepository.findByIdAndRestaurant(itemOne.getId(), restaurantEntity);
         assertTrue(savedItemResult.isPresent(), "Saved item is present");
-        savedItemResult.ifPresent(itemEntity -> {
-            assertTrue(itemEntity.getModifierGroups().contains(mgOne), "Saved modifier group is present");
-        });
+        savedItemResult.ifPresent(itemEntity -> assertTrue(itemEntity.getModifierGroups().contains(mgOne), "Saved modifier group is present"));
 
     }
 

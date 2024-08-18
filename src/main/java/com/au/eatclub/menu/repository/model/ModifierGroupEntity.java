@@ -78,9 +78,4 @@ public class ModifierGroupEntity {
         modifierOption.getModifierGroups().add(this);
     }
 
-    public void removeModifierOption(ModifierOptionEntity modifierOption) {
-        this.modifierOptions.remove(modifierOption);
-        modifierOption.getModifierGroups().remove(this);
-    }
-
 }
