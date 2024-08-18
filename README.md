@@ -4,6 +4,7 @@
 
 * [Requirements](#requirements)
 * [Database Design & Design Decisions](#database-design---design-decisions)
+* [Running the application locally](#running-the-application-locally)
 * [Specification of the Main Tables](misc/database-table-spec.md)
 
 ## Requirements
@@ -120,6 +121,9 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
 ![Alt text](./misc/db-design/eat-club-coding-assignment-db-design.svg)
 
 - Please refer [this page](misc/database-table-spec.md) for the detailed specification of the main tables.
+- Please refer [this file](misc/db-design/queries-used-in-function.sql) for the queries which has been used in this
+  function.
+- `com.au.eatclub.menu.repository.model` package contains all the classes used to map the tables in the above diagram.
 - `restaurant` table holds the data related to a specific restaurant.
 - `menu` table holds the data related to menus available at the restaurant (Eg: breakfast, lunch).
 - `category` table holds the data related to categories of a menu.
