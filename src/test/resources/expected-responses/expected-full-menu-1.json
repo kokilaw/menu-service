@@ -1,223 +1,246 @@
 {
   "result": {
-    "menus": [],
-    "categories": [
+    "menus": [
       {
-        "id": "e8024abe-5d4e-11ef-904a-0242ac110003",
-        "name": "Vegetarian Pizza",
-        "itemIds": [
-          "e802bfda-5d4e-11ef-904a-0242ac110003",
-          "e802fc41-5d4e-11ef-904a-0242ac110003"
+        "id": "56ed99e5-5d62-11ef-b191-0242ac110003",
+        "name": "All Day",
+        "timeBased": false,
+        "startAt": "00:00:00",
+        "endAt": "23:59:59",
+        "categoryIds": [
+          "56ee39bd-5d62-11ef-b191-0242ac110003",
+          "56ee8d14-5d62-11ef-b191-0242ac110003"
         ]
       },
       {
-        "id": "e80284b5-5d4e-11ef-904a-0242ac110003",
+        "id": "56ede3d5-5d62-11ef-b191-0242ac110003",
+        "name": "Dinner",
+        "timeBased": true,
+        "startAt": "18:00:00",
+        "endAt": "23:59:59",
+        "categoryIds": [
+          "56ee39bd-5d62-11ef-b191-0242ac110003",
+          "56ee8d14-5d62-11ef-b191-0242ac110003"
+        ]
+      }
+    ],
+    "categories": [
+      {
+        "id": "56ee39bd-5d62-11ef-b191-0242ac110003",
+        "name": "Vegetarian Pizza",
+        "itemIds": [
+          "56eecb62-5d62-11ef-b191-0242ac110003",
+          "56ef018b-5d62-11ef-b191-0242ac110003"
+        ]
+      },
+      {
+        "id": "56ee8d14-5d62-11ef-b191-0242ac110003",
         "name": "Non-Vegetarian Pizza",
         "itemIds": [
-          "e8033452-5d4e-11ef-904a-0242ac110003",
-          "e803699b-5d4e-11ef-904a-0242ac110003",
-          "e803a16d-5d4e-11ef-904a-0242ac110003",
-          "e803d89d-5d4e-11ef-904a-0242ac110003"
+          "56ef401f-5d62-11ef-b191-0242ac110003",
+          "56ef7cde-5d62-11ef-b191-0242ac110003",
+          "56efba25-5d62-11ef-b191-0242ac110003",
+          "56effba5-5d62-11ef-b191-0242ac110003"
         ]
       }
     ],
     "items": [
       {
-        "id": "e802bfda-5d4e-11ef-904a-0242ac110003",
+        "id": "56eecb62-5d62-11ef-b191-0242ac110003",
         "name": "Cheese Pizza",
         "description": "All children like pressed chicken lards in gold tequila and butterscotch.",
         "variants": [
           {
-            "id": "e807924b-5d4e-11ef-904a-0242ac110003",
+            "id": "56f5095d-5d62-11ef-b191-0242ac110003",
             "name": "Small",
             "type": "SIZE",
             "price": "7.99"
           },
           {
-            "id": "e807970e-5d4e-11ef-904a-0242ac110003",
+            "id": "56f50d1d-5d62-11ef-b191-0242ac110003",
             "name": "Medium",
             "type": "SIZE",
             "price": "9.99"
           },
           {
-            "id": "e80799ff-5d4e-11ef-904a-0242ac110003",
+            "id": "56f510ab-5d62-11ef-b191-0242ac110003",
             "name": "Large",
             "type": "SIZE",
             "price": "12.99"
           }
         ],
         "modifierGroupIds": [
-          "e808f79a-5d4e-11ef-904a-0242ac110003",
-          "e809996f-5d4e-11ef-904a-0242ac110003"
+          "56f66cf8-5d62-11ef-b191-0242ac110003",
+          "56f71f6f-5d62-11ef-b191-0242ac110003"
         ]
       },
       {
-        "id": "e802fc41-5d4e-11ef-904a-0242ac110003",
+        "id": "56ef018b-5d62-11ef-b191-0242ac110003",
         "name": "Margherita Pizza",
         "description": "What’s the secret to yellow and tangy apple? Always use gooey vodka.",
         "variants": [
           {
-            "id": "e8079acd-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51530-5d62-11ef-b191-0242ac110003",
             "name": "Small",
             "type": "SIZE",
             "price": "8.99"
           },
           {
-            "id": "e8079b69-5d4e-11ef-904a-0242ac110003",
+            "id": "56f5160e-5d62-11ef-b191-0242ac110003",
             "name": "Medium",
             "type": "SIZE",
             "price": "10.99"
           },
           {
-            "id": "e8079c05-5d4e-11ef-904a-0242ac110003",
+            "id": "56f516a9-5d62-11ef-b191-0242ac110003",
             "name": "Large",
             "type": "SIZE",
             "price": "12.99"
           }
         ],
         "modifierGroupIds": [
-          "e808f79a-5d4e-11ef-904a-0242ac110003",
-          "e809996f-5d4e-11ef-904a-0242ac110003"
+          "56f66cf8-5d62-11ef-b191-0242ac110003",
+          "56f71f6f-5d62-11ef-b191-0242ac110003"
         ]
       },
       {
-        "id": "e8033452-5d4e-11ef-904a-0242ac110003",
+        "id": "56ef401f-5d62-11ef-b191-0242ac110003",
         "name": "Meat Lovers Pizza",
         "description": "Slobbery, warm pudding is best rubed with aged buttermilk.",
         "variants": [
           {
-            "id": "e8079c93-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51739-5d62-11ef-b191-0242ac110003",
             "name": "Small",
             "type": "SIZE",
             "price": "9.99"
           },
           {
-            "id": "e8079d99-5d4e-11ef-904a-0242ac110003",
+            "id": "56f517bf-5d62-11ef-b191-0242ac110003",
             "name": "Medium",
             "type": "SIZE",
             "price": "11.99"
           },
           {
-            "id": "e8079f0f-5d4e-11ef-904a-0242ac110003",
+            "id": "56f5184e-5d62-11ef-b191-0242ac110003",
             "name": "Large",
             "type": "SIZE",
             "price": "13.99"
           }
         ],
         "modifierGroupIds": [
-          "e808f79a-5d4e-11ef-904a-0242ac110003",
-          "e80944e2-5d4e-11ef-904a-0242ac110003",
-          "e809996f-5d4e-11ef-904a-0242ac110003"
+          "56f66cf8-5d62-11ef-b191-0242ac110003",
+          "56f6d21e-5d62-11ef-b191-0242ac110003",
+          "56f71f6f-5d62-11ef-b191-0242ac110003"
         ]
       },
       {
-        "id": "e803699b-5d4e-11ef-904a-0242ac110003",
+        "id": "56ef7cde-5d62-11ef-b191-0242ac110003",
         "name": "Pepperoni Pizza",
         "description": "What’s the secret to clammy and grey doughnut? Always use sun-dried nutmeg.",
         "variants": [
           {
-            "id": "e807a084-5d4e-11ef-904a-0242ac110003",
+            "id": "56f518e9-5d62-11ef-b191-0242ac110003",
             "name": "Small",
             "type": "SIZE",
             "price": "7.99"
           },
           {
-            "id": "e807a1de-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51972-5d62-11ef-b191-0242ac110003",
             "name": "Medium",
             "type": "SIZE",
             "price": "9.99"
           },
           {
-            "id": "e807a2a7-5d4e-11ef-904a-0242ac110003",
+            "id": "56f519ff-5d62-11ef-b191-0242ac110003",
             "name": "Large",
             "type": "SIZE",
             "price": "12.99"
           }
         ],
         "modifierGroupIds": [
-          "e808f79a-5d4e-11ef-904a-0242ac110003",
-          "e80944e2-5d4e-11ef-904a-0242ac110003",
-          "e809996f-5d4e-11ef-904a-0242ac110003"
+          "56f66cf8-5d62-11ef-b191-0242ac110003",
+          "56f6d21e-5d62-11ef-b191-0242ac110003",
+          "56f71f6f-5d62-11ef-b191-0242ac110003"
         ]
       },
       {
-        "id": "e803a16d-5d4e-11ef-904a-0242ac110003",
+        "id": "56efba25-5d62-11ef-b191-0242ac110003",
         "name": "Seafood Pizza",
         "description": "Apple combines greatly with ripe cracker crumps.",
         "variants": [
           {
-            "id": "e807a345-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51a94-5d62-11ef-b191-0242ac110003",
             "name": "Small",
             "type": "SIZE",
             "price": "7.99"
           },
           {
-            "id": "e807a3cb-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51b1e-5d62-11ef-b191-0242ac110003",
             "name": "Medium",
             "type": "SIZE",
             "price": "9.99"
           },
           {
-            "id": "e807a456-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51ba9-5d62-11ef-b191-0242ac110003",
             "name": "Large",
             "type": "SIZE",
             "price": "12.99"
           }
         ],
         "modifierGroupIds": [
-          "e808f79a-5d4e-11ef-904a-0242ac110003",
-          "e80944e2-5d4e-11ef-904a-0242ac110003",
-          "e809996f-5d4e-11ef-904a-0242ac110003"
+          "56f66cf8-5d62-11ef-b191-0242ac110003",
+          "56f6d21e-5d62-11ef-b191-0242ac110003",
+          "56f71f6f-5d62-11ef-b191-0242ac110003"
         ]
       },
       {
-        "id": "e803d89d-5d4e-11ef-904a-0242ac110003",
+        "id": "56effba5-5d62-11ef-b191-0242ac110003",
         "name": "Hawaiian Pizza",
         "description": "Try cooking carrots pie mashed up with sweet chili sauce.",
         "variants": [
           {
-            "id": "e807a520-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51c7e-5d62-11ef-b191-0242ac110003",
             "name": "Small",
             "type": "SIZE",
             "price": "7.99"
           },
           {
-            "id": "e807a5b1-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51d18-5d62-11ef-b191-0242ac110003",
             "name": "Medium",
             "type": "SIZE",
             "price": "9.99"
           },
           {
-            "id": "e807a63b-5d4e-11ef-904a-0242ac110003",
+            "id": "56f51da8-5d62-11ef-b191-0242ac110003",
             "name": "Large",
             "type": "SIZE",
             "price": "12.99"
           }
         ],
         "modifierGroupIds": [
-          "e808f79a-5d4e-11ef-904a-0242ac110003",
-          "e80944e2-5d4e-11ef-904a-0242ac110003",
-          "e809996f-5d4e-11ef-904a-0242ac110003"
+          "56f66cf8-5d62-11ef-b191-0242ac110003",
+          "56f6d21e-5d62-11ef-b191-0242ac110003",
+          "56f71f6f-5d62-11ef-b191-0242ac110003"
         ]
       }
     ],
     "modifierGroups": [
       {
-        "id": "e808f79a-5d4e-11ef-904a-0242ac110003",
+        "id": "56f66cf8-5d62-11ef-b191-0242ac110003",
         "name": "Sauce",
         "minRequired": 0,
         "maxAllowed": 0,
         "modifierOptionIds": []
       },
       {
-        "id": "e80944e2-5d4e-11ef-904a-0242ac110003",
+        "id": "56f6d21e-5d62-11ef-b191-0242ac110003",
         "name": "Meat AddOn",
         "minRequired": 0,
         "maxAllowed": 2,
         "modifierOptionIds": []
       },
       {
-        "id": "e809996f-5d4e-11ef-904a-0242ac110003",
+        "id": "56f71f6f-5d62-11ef-b191-0242ac110003",
         "name": "Cheese AddOn",
         "minRequired": 0,
         "maxAllowed": 1,
@@ -226,5 +249,6 @@
     ],
     "modifierOptions": []
   },
-  "requestId": "f3794134-15e7-4415-8c98-6f4cb30e2ca3"
+  "requestId": "b482f66e-ecff-48f7-bdff-043c73b4a5df",
+  "success": true
 }
