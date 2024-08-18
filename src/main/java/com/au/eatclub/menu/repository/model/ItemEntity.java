@@ -41,10 +41,6 @@ public class ItemEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "type")
-    @Enumerated(EnumType.STRING)
-    private ItemType type;
-
     @Builder.Default
     @OneToMany(
             cascade = CascadeType.ALL,

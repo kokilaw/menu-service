@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -53,19 +54,16 @@ class ItemRepositoryTest {
 
         ItemEntity itemOne = ItemEntity.builder()
                 .name("ITEM_1")
-                .type(ItemEntity.ItemType.DEFAULT_ITEM)
                 .description("sample description 1")
                 .restaurant(restaurantEntity)
                 .build();
         ItemEntity itemTwo = ItemEntity.builder()
                 .name("ITEM_2")
-                .type(ItemEntity.ItemType.DEFAULT_ITEM)
                 .description("sample description 2")
                 .restaurant(restaurantEntity)
                 .build();
 
-        itemRepository.persist(itemOne);
-        itemRepository.persist(itemTwo);
+        itemRepository.persist(Stream.of(itemOne, itemTwo));
 
         savedCategory.addItem(itemOne);
         savedCategory.addItem(itemTwo);
@@ -91,7 +89,6 @@ class ItemRepositoryTest {
         ItemEntity itemEntity = ItemEntity.builder()
                 .name("ITEM_1")
                 .description("sample description 1")
-                .type(ItemEntity.ItemType.DEFAULT_ITEM)
                 .restaurant(restaurantEntity)
                 .build();
         itemEntity.addVariant(ItemVariantEntity.builder()

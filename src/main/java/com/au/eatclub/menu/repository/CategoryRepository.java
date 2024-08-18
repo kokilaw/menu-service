@@ -10,6 +10,5 @@ import java.util.Optional;
 
 public interface CategoryRepository extends PanacheRepositoryBase<CategoryEntity, String> {
     List<CategoryEntity> findByRestaurant(RestaurantEntity restaurantEntity);
-
     Optional<CategoryEntity> findByIdAndRestaurant(String id, RestaurantEntity restaurantEntity);
 }

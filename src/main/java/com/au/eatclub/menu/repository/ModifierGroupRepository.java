@@ -10,6 +10,5 @@ import java.util.Optional;
 
 public interface ModifierGroupRepository extends PanacheRepositoryBase<ModifierGroupEntity, String> {
     List<ModifierGroupEntity> findByRestaurant(RestaurantEntity restaurantEntity);
-
     Optional<ModifierGroupEntity> findByIdAndRestaurant(String id, RestaurantEntity restaurantEntity);
 }

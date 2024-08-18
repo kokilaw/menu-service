@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +26,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "modifier_group")
-public class ModifierGroupEntity {
+@Table(name = "modifier_option")
+public class ModifierOptionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -35,22 +36,17 @@ public class ModifierGroupEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "price")
+    private BigDecimal price;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
 
     @Builder.Default
-    @Column(name = "min_required")
-    private Integer minRequired = 0;
-
-    @Builder.Default
-    @Column(name = "max_allowed")
-    private Integer maxAllowed = 0;
-
-    @Builder.Default
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
-            name = "item_modifier_group",
+            name = "modifier_group_modifier_option",
             joinColumns = {
                     @JoinColumn(
                             name = "modifier_group_id",
@@ -59,28 +55,11 @@ public class ModifierGroupEntity {
             },
             inverseJoinColumns = {
                     @JoinColumn(
-                            name = "item_id",
+                            name = "modifier_option_id",
                             referencedColumnName = "id"
                     )
             }
     )
-    private List<ItemEntity> items = new ArrayList<>();
-
-    @Builder.Default
-    @ManyToMany(
-            mappedBy = "modifierGroups",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    private List<ModifierOptionEntity> modifierOptions = new ArrayList<>();
-
-    public void addModifierOption(ModifierOptionEntity modifierOption) {
-        this.modifierOptions.add(modifierOption);
-        modifierOption.getModifierGroups().add(this);
-    }
-
-    public void removeModifierOption(ModifierOptionEntity modifierOption) {
-        this.modifierOptions.remove(modifierOption);
-        modifierOption.getModifierGroups().remove(this);
-    }
+    private List<ModifierGroupEntity> modifierGroups = new ArrayList<>();
 
 }

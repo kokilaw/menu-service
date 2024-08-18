@@ -20,6 +20,12 @@ class RestaurantRepositoryTest {
     RestaurantRepository restaurantRepository;
 
     @Test
+    void existingRestaurantIsReturned() {
+        Optional<RestaurantEntity> result = restaurantRepository.findAll().stream().findAny();
+        assertTrue(result.isPresent(), "Existing restaurant is returned");
+    }
+
+    @Test
     void givenEntity_whenSaved_IdGetsSetAndSavedEntityIsReturning() {
         String publicId = UUID.randomUUID().toString();
         RestaurantEntity entity = RestaurantEntity.builder()

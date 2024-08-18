@@ -24,7 +24,6 @@ CREATE TABLE item
     id            varchar(36) NOT NULL,
     name          varchar(50) NOT NULL,
     description   varchar(255),
-    type          varchar(20) NOT NULL,
     restaurant_id varchar(36) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
@@ -68,4 +67,23 @@ CREATE TABLE item_modifier_group
     PRIMARY KEY (item_id, modifier_group_id),
     FOREIGN KEY (item_id) REFERENCES item (id),
     FOREIGN KEY (modifier_group_id) REFERENCES modifier_group (id)
+);
+
+CREATE TABLE modifier_option
+(
+    id            varchar(36)    NOT NULL,
+    name          varchar(50)    NOT NULL,
+    restaurant_id varchar(36)    NOT NULL,
+    price         decimal(10, 2) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
+);
+
+CREATE TABLE modifier_group_modifier_option
+(
+    modifier_group_id  varchar(36) NOT NULL,
+    modifier_option_id varchar(36) NOT NULL,
+    PRIMARY KEY (modifier_group_id, modifier_option_id),
+    FOREIGN KEY (modifier_group_id) REFERENCES modifier_group (id),
+    FOREIGN KEY (modifier_option_id) REFERENCES modifier_option (id)
 );
