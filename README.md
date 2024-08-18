@@ -23,6 +23,11 @@
 ```shell
 mvn compile quarkus:dev
 ```
+* Use the following command to run all the unit test cases.
+
+```shell
+mvn test
+```
 
 * Use the following curl the fetch the menu from sample data.
 
@@ -41,6 +46,7 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
 ```jsonc
 {
   "result": {
+    // All the menus under the retaurants
     "menus": [
       {
         "id": "75b81533-5d6d-11ef-bee2-0242ac110003",
@@ -56,6 +62,7 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
       },
       ...
     ],
+    // All the categories under the restaurant
     "categories": [
       {
         "id": "75b87563-5d6d-11ef-bee2-0242ac110003",
@@ -68,6 +75,7 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
       },
       ...
     ],
+    // All the items under the restaurant
     "items": [
       {
         "id": "75b8d9de-5d6d-11ef-bee2-0242ac110003",
@@ -90,6 +98,7 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
       },
       ...
     ],
+    // All the modifier groups under the restaurant
     "modifierGroups": [
       {
         "id": "75bf7276-5d6d-11ef-bee2-0242ac110003",
@@ -104,6 +113,7 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
       },
       ...
     ],
+    // All the modifier options under the restaurant
     "modifierOptions": [
       {
         "id": "75c1a9b3-5d6d-11ef-bee2-0242ac110003",
@@ -152,6 +162,8 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
 | MySQL                 | Conditions of the coding challenge                                                                                                                                                                            |
 | Panache Hibernate ORM | - Less boilerplate code when connecting with database.<br/>- Automatic query generation.                                                                                                                      |
 | Flyway                | To handle the the migration of schemas. (Refer - `resources/db/migration` folder the current schema updates)                                                                                                  |
+| Lombok                | To  generate frequently used class methods like getters and setters via annotations                                                                                                                           |
+| MapStruct             | To  generate mapping code between entity classes and DTO classes                                                                                                                                              |
 
 ## Future Enhancements
 
