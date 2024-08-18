@@ -2,8 +2,7 @@
 // Docs: https://dbml.dbdiagram.io/docs
 
 Table restaurant {
-  internal_id bigint [primary key]
-  id varchar(36) [unique]
+  id varchar(36) [pk]
   name varchar
   website varchar
   phone_number varchar
@@ -12,72 +11,80 @@ Table restaurant {
   currency_code char(3)
 }
 
+Table menu {
+  id varchar(36) [pk]
+  name varchar
+  restaurant_id varchar(36)
+  effective_from timestamp
+  effective_until timetamp
+}
+
 Table category {
-  internal_id bigint [primary key]
-  id varchar(36) [unique]
-  restaurant_id bigint
+  id varchar(36) [pk]
+  restaurant_id varchar(36)
   name varchar
 }
 
+Table menu_category {
+  menu_id varchar(36) [pk]
+  category_id varchar(36) [pk]
+}
+
 Table item {
-  internal_id bigint [primary key]
-  id varchar(36) [unique]
-  restaurant_id bigint
+  id varchar(36) [pk]
+  restaurant_id varchar(36)
   name varchar
   description text
 }
 
 Table item_variant {
-  internal_id bigint [primary key]
-  id varchar(36) [unique]
-  item_id bigint
+  id varchar(36) [pk]
+  item_id varchar(36)
   type varchar
   price decimal(6,2)
 }
 
 Table category_item {
-  internal_id bigint [primary key]
-  category_id bigint
-  item_id bigint
+  category_id varchar(36) [pk]
+  item_id varchar(36) [pk]
 }
 
 Table modifier_group {
-  internal_id bigint [primary key]
-  id varchar(36) [unique]
-  restaurant_id bigint
+  id varchar(36) [pk]
+  restaurant_id varchar(36)
   name varchar
   min_required int
   max_allowed int
 }
 
 Table item_modifier_group {
-  internal_id bigint [primary key]
-  item_id bigint
-  modifier_group_id bigint
+  item_id varchar(36) [pk]
+  modifier_group_id varchar(36) [pk]
 }
 
 Table modifier_option {
-  internal_id bigint [primary key]
-  id varchar(36) [unique]
-  restaurant_id bigint
+  id varchar(36) [pk]
+  restaurant_id varchar(36)
   name varchar
   price decimal(6,2)
 }
 
 Table modifier_group_modifier_option {
-  internal_id bigint [primary key]
-  modifier_group_id bigint
-  modifier_option_id bigint
+  modifier_group_id varchar(36) [pk]
+  modifier_option_id varchar(36) [pk]
 }
 
-Ref: category.restaurant_id > restaurant.internal_id // many-to-one
-Ref: item.restaurant_id > restaurant.internal_id // many-to-one
-Ref: item_variant.item_id > item.internal_id // many-to-one
-Ref: category_item.category_id > category.internal_id // many-to-one
-Ref: category_item.item_id > item.internal_id // many-to-one
-Ref: modifier_group.restaurant_id > restaurant.internal_id // many-to-one
-Ref: modifier_option.restaurant_id > restaurant.internal_id // many-to-one
-Ref: item_modifier_group.item_id > item.internal_id // many-to-one
-Ref: item_modifier_group.modifier_group_id > modifier_group.internal_id // many-to-one
-Ref: modifier_group_modifier_option.modifier_group_id > modifier_group.internal_id // many-to-one
-Ref: modifier_group_modifier_option.modifier_option_id > modifier_option.internal_id // many-to-one
+Ref: menu.restaurant_id > restaurant.id // many-to-
+Ref: category.restaurant_id > restaurant.id // many-to-one
+Ref: menu_category.category_id > category.id // many-to-one
+Ref: menu_category.menu_id > menu.id // many-to-one
+Ref: item.restaurant_id > restaurant.id // many-to-one
+Ref: item_variant.item_id > item.id // many-to-one
+Ref: category_item.category_id > category.id // many-to-one
+Ref: category_item.item_id > item.id // many-to-one
+Ref: modifier_group.restaurant_id > restaurant.id // many-to-one
+Ref: modifier_option.restaurant_id > restaurant.id // many-to-one
+Ref: item_modifier_group.item_id > item.id // many-to-one
+Ref: item_modifier_group.modifier_group_id > modifier_group.id // many-to-one
+Ref: modifier_group_modifier_option.modifier_group_id > modifier_group.id // many-to-one
+Ref: modifier_group_modifier_option.modifier_option_id > modifier_option.id // many-to-one
