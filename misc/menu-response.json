@@ -1,6 +1,20 @@
 {
+  "menus": [
+    {
+      "id": "",
+      "name": "Dinner",
+      "timeBased": true,
+      "startAt": "",
+      "endAt": "",
+      "categoryIds": [
+        "",
+        ""
+      ]
+    }
+  ],
   "categories": [
     {
+      "id": "",
       "name": "Cat  1",
       "itemIds": [
         "item1, item2"
@@ -9,16 +23,24 @@
   ],
   "items": [
     {
+      "id": "",
       "name": "Item Name",
       "variants": [],
-      "modifierGroupId": []
+      "modifierGroupIds": []
     }
   ],
   "modifierGroups": [
     {
+      "id": "",
       "name": "",
       "modifierOptionIds": []
     }
   ],
-  "modifierOptions": []
+  "modifierOptions": [
+    {
+      "id": "",
+      "name": "",
+      "price": "3.40"
+    }
+  ]
 }

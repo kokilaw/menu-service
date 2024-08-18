@@ -32,7 +32,7 @@ class ItemRepositoryTest {
     private String testRestaurantId = "NOT_SET";
 
     @Test
-    void itemsAreCorrectlyGettingSavedWithCategories() {
+    void givenItem_whenSaved_isReturnedCorrectly() {
 
         RestaurantEntity restaurantEntity = RepositoryTestUtil.getRestaurantEntity(
                 restaurantRepository,
@@ -81,7 +81,8 @@ class ItemRepositoryTest {
     }
 
     @Test
-    void itemVariantsAreCorrectlySavedAndReturned() {
+    void givenVariants_whenAttachedToItems_isReturnedWithItem() {
+
         RestaurantEntity restaurantEntity = RepositoryTestUtil.getRestaurantEntity(
                 restaurantRepository,
                 testRestaurantId

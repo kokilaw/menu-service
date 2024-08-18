@@ -29,7 +29,7 @@ class ItemModifierGroupRepositoryTest {
     private String restaurantId = UUID.randomUUID().toString();
 
     @Test
-    void modifierGroupsAreSavedAndReturned() {
+    void givenModifierGroup_whenAttachedToItems_isReturnedWithItems() {
 
         RestaurantEntity restaurantEntity = RepositoryTestUtil.getRestaurantEntity(restaurantRepository, restaurantId);
         restaurantId = restaurantEntity.getId();

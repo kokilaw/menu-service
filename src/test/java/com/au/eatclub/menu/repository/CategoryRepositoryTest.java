@@ -27,7 +27,7 @@ class CategoryRepositoryTest {
     private static final String TEST_CATEGORY_ID = UUID.randomUUID().toString();
 
     @Test
-    void whenCategoryIsSaved_IdIsSetAndIsReturned() {
+    void givenCategory_whenSaved_IsReturnedCorrectly() {
         RestaurantEntity restaurantEntity = RepositoryTestUtil.getRestaurantEntity(restaurantRepository, testRestaurantId);
         testRestaurantId = restaurantEntity.getId();
 

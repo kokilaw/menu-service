@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -44,6 +45,25 @@ public class CategoryEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
+
+    @Builder.Default
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "menu_category",
+            joinColumns = {
+                    @JoinColumn(
+                            name = "menu_id",
+                            referencedColumnName = "id"
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(
+                            name = "category_id",
+                            referencedColumnName = "id"
+                    )
+            }
+    )
+    private List<MenuEntity> menus = new ArrayList<>();
 
     public void addItem(ItemEntity itemEntity) {
         items.add(itemEntity);

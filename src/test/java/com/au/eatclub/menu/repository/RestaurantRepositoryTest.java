@@ -7,7 +7,6 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,13 +19,13 @@ class RestaurantRepositoryTest {
     RestaurantRepository restaurantRepository;
 
     @Test
-    void existingRestaurantIsReturned() {
+    void givenSavedRestaurant_whenRequested_isReturned() {
         Optional<RestaurantEntity> result = restaurantRepository.findAll().stream().findAny();
         assertTrue(result.isPresent(), "Existing restaurant is returned");
     }
 
     @Test
-    void givenEntity_whenSaved_IdGetsSetAndSavedEntityIsReturning() {
+    void givenRestaurant_whenSaved_isReturnedCorrectly() {
         RestaurantEntity entity = RestaurantEntity.builder()
                 .name("Curry Pot")
                 .email("info@currypot.com.au")

@@ -2,7 +2,6 @@ package com.au.eatclub.menu.repository;
 
 import com.au.eatclub.menu.repository.model.RestaurantEntity;
 import groovy.util.logging.Slf4j;
-import org.jboss.logging.Logger;
 
 @Slf4j
 public class RepositoryTestUtil {
