@@ -35,7 +35,7 @@ curl --location 'http://localhost:8080/' \
 
 Refer [this file](misc/menu-response-sample.json) for more detailed sample response.
 
-```json
+```jsonc
 {
   "result": {
     "menus": [
