@@ -3,8 +3,10 @@
 ## Table Of Contents
 
 * [Requirements](#requirements)
-* [Database Design & Design Decisions](#database-design---design-decisions)
+* [Database Design & Design Decisions](#database-design--design-decisions)
 * [Running the application locally](#running-the-application-locally)
+* [Technology Decisions](#technology-decisions)
+* [Future Enhancements](#future-enhancements)
 * [Specification of the Main Tables](misc/database-table-spec.md)
 
 ## Requirements
@@ -140,6 +142,16 @@ Refer [this file](misc/menu-response-sample.json) for more detailed sample respo
   modifier group can belong to multiple items.
 - `modifier_group_modifier_option` mapping table has been introduced since a modifier group can include multiple
   modifier options and a modifier option can belong to multiple modifier groups.
+
+## Technology Decisions
+
+| Technology            | Reasons                                                                                                                                                                                                       | 
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Java 17               | Latest Java version supported by selected framework - Quarkus                                                                                                                                                 |   
+| Quarkus               | - Optimized to run on Lambda environments than using plain Java<br/>- Ability build as native executable to reduce the cold start problem<br/>- Less memory foot print that the alternatives like Spring Boot |
+| MySQL                 | Conditions of the coding challenge                                                                                                                                                                            |
+| Panache Hibernate ORM | - Less boilerplate code when connecting with database.<br/>- Automatic query generation.                                                                                                                      |
+| Flyway                | To handle the the migration of schemas. (Refer - `resources/db/migration` folder the current schema updates)                                                                                                  |
 
 ## Future Enhancements
 
